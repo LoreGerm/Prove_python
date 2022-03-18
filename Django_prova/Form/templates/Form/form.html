@@ -16,21 +16,31 @@
 
     <div class="mt-5 container text-center w-50">
         <h1 class="mb-5">Mandami un mesaggio</h3>
-        <div class="row mb-3">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Nome" aria-label="Nome">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Cognome" aria-label="Cognome" required>
+                </div>
             </div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Cognome" aria-label="Cognome">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" required>
             </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Messaggio"></textarea>
+            </div>
+            <div>
+            <button type="submit" class="w-100 btn btn-primary"> Invia </button>
+            </div>
+        </form>
+        <div>
+            {% for m in messages %}
+            <h1> {{m}} </h1>
+            {% endfor %}
         </div>
-        <div class="mb-3">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
-        </div>
-        <div class="mb-3">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Messaggio"></textarea>
-        </div>
-        <button class="w-100 btn btn-primary"> Invia </button>
     </div>
 
 </body>
