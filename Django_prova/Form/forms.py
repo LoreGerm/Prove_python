@@ -1,6 +1,5 @@
 
 from django import forms
-from matplotlib import widgets
 from Form.models import utente
 
 class FormMsg(forms.ModelForm):
