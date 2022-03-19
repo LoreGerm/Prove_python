@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .form import FormMsg
+from .forms import FormMsg
 from django.contrib import messages
 
 # Create your views here.
