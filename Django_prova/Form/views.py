@@ -12,5 +12,7 @@ def form(request):
             messages.success(request, 'Il messaggio è stato inviato')
         else:
             messages.success(request, 'Errore')
+    
+    context = {'form':FORM}
 
-    return render(request, 'Form/form.html', {'form':FORM})
+    return render(request, 'Form/form.html', context)
