@@ -12,7 +12,7 @@
                     <h5 class="card-title"> {{ m.nome }} {{' '}} {{ m.cognome }} </h5>
                     <p class="card-text"> {{m.email}} </p>
                     <p class="card-text"> {{m.messaggio}} </p>
-                    <a href="{% url 'elimina' utente.id %}" class="btn btn-danger"> Elimina </a>
+                    <a href="{% url 'elimina' id=utente.id %}" class="btn btn-danger"> Elimina </a>
                 </div>
             </div>
             {% endfor %}

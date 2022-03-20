@@ -22,7 +22,7 @@ def messaggi(request):
     return render(request, 'Form/mess.html', context)
 
 
-def elimina(request, utente_id):
-    ut = utente.objects.get(pk = utente_id)
+def elimina(request, id):
+    ut = utente.objects.get(id = id)
     ut.delete()
     return redirect('mess')
