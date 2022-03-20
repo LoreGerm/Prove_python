@@ -1,11 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Form.models import utente
 from .forms import FormMsg
 from django.contrib import messages
 
-# Create your views here.
-def form(request):
 
+def form(request):
     if request.method == 'POST':
         form = FormMsg(request.POST)
         if form.is_valid:
@@ -21,3 +20,9 @@ def messaggi(request):
     mess = utente.objects.all()
     context = {'mess':mess}
     return render(request, 'Form/mess.html', context)
+
+
+def elimina(request, utente_id):
+    ut = utente.objects.get(pk = utente_id)
+    ut.delete()
+    return redirect('mess')
