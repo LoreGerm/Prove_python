@@ -15,25 +15,21 @@
 
     <div class="mt-5 container text-center w-50">
         <h1 class="mb-5">Mandami un mesaggio</h3>
-        <form action="" method="POST">
+        <form action="{% url 'form' %}" method="POST">
             {% csrf_token %}
             <div class="row mb-3">
                 <div class="col">
-                    {{ form.nome }}
-                    <!--<input type="text" class="form-control" id="nome" placeholder="Nome" aria-label="Nome" required> -->
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" aria-label="Nome" required>
                 </div>
                 <div class="col">
-                    {{ form.cognome }}
-                    <!--<input type="text" class="form-control" id="cognome" placeholder="Cognome" aria-label="Cognome" required> -->
+                    <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Cognome" aria-label="Cognome" required>
                 </div>
             </div>
             <div class="mb-3">
-                {{ form.email }}
-                <!--<input type="email" class="form-control" id="email" placeholder="Email" required> -->
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="mb-3">
-                {{ form.messaggio }}
-                <!--<textarea class="form-control" id="messaggio" rows="10" placeholder="Messaggio"></textarea> -->
+                <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio"></textarea>
             </div>
             <div>
             <button type="submit" class="w-100 btn btn-primary"> Invia </button>

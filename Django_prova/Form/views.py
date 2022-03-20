@@ -4,15 +4,13 @@ from django.contrib import messages
 
 # Create your views here.
 def form(request):
-    FORM = FormMsg()
+
     if request.method == 'POST':
         form = FormMsg(request.POST)
-        if form.is_valid():
+        if form.is_valid:
             form.save()
             messages.success(request, 'Il messaggio è stato inviato')
         else:
             messages.success(request, 'Errore')
-    
-    context = {'form':FORM}
 
-    return render(request, 'Form/form.html', context)
+    return render(request, 'Form/form.html')
