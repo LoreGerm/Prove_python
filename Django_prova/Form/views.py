@@ -13,12 +13,16 @@ def form(request):
         else:
             messages.success(request, 'Errore')
 
-    return render(request, 'Form/form.html')
+    context = {
+        'msc': 'Mandami un messaggio',
+        'btn': 'Invia'
+    }
+    return render(request, 'Form/form.html', context)
 
 
 def messaggi(request):
-    mess = utente.objects.all()
-    context = {'mess':mess}
+    ut = utente.objects.all()
+    context = {'utenti':ut}
     return render(request, 'Form/mess.html', context)
 
 
@@ -26,3 +30,20 @@ def elimina(request, id):
     ut = utente.objects.get(id = id)
     ut.delete()
     return redirect('mess')
+
+
+def update(request, id):
+    ut = utente.objects.get(id = id)
+    if request.method == 'POST':
+        form = FormMsg(request.POST, instance=ut)
+        if form.is_valid:
+            form.save()
+            messages.success(request, 'Modifica avvenuta con successo')
+        else:
+            messages.success(request, 'Errore')
+
+    context = {
+        'msc': 'Modifica messaggio',
+        'btn': 'Conferma'
+    }
+    return render(request, 'Form/form.html', context)

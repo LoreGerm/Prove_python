@@ -3,7 +3,7 @@
 {% block content %}
 <div class="mt-5 container text-center w-50">
     <div>
-        <h1 class="mb-5">Mandami un mesaggio</h3>
+        <h1 class="mb-5"> {{ msc }} </h3>
         <form action="{% url 'form' %}" method="POST">
             {% csrf_token %}
             <div class="row mb-3">
@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="w-100 btn btn-primary "> Invia </button>
+                    <button type="submit" class="w-100 btn btn-primary "> {{ btn }} </button>
                 </div>
                 <div class="col">
                     <a href="{% url 'mess' %}" class="w-100 btn btn-primary"> Visualizza messaggi </a>
