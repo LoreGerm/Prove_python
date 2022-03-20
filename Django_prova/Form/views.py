@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from Form.models import utente
 from .forms import FormMsg
 from django.contrib import messages
 
@@ -14,3 +15,9 @@ def form(request):
             messages.success(request, 'Errore')
 
     return render(request, 'Form/form.html')
+
+
+def messaggi(request):
+    mess = utente.objects.all()
+    context = {'mess':mess}
+    return render(request, 'Form/mess.html', context)
