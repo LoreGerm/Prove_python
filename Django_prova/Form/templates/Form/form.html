@@ -4,7 +4,11 @@
 <div class="mt-5 container text-center w-50">
     <div>
         <h1 class="mb-5"> {{ msc }} </h3>
-        <form action="{% url views utente %}" method="POST">
+        {% if views == 'form' %}
+        <form action="{% url views %}" method="POST">
+        {% else %}
+        <form action="{% url views utente %}" method="POST"></form>
+        {% endif %}
             {% csrf_token %}
             <div class="row mb-3">
                 <div class="col">
