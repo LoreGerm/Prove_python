@@ -7,7 +7,7 @@
         {% if views == 'form' %}
         <form action="{% url views %}" method="POST">
         {% else %}
-        <form action="{% url views utente %}" method="POST"></form>
+        <form action="{% url views utente %}" method="POST">
         {% endif %}
             {% csrf_token %}
             <div class="row mb-3">
