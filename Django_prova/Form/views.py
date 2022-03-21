@@ -50,3 +50,14 @@ def update(request, id):
         'btn': 'Conferma'
     }
     return render(request, 'Form/form.html', context)
+
+
+def cerca(request):
+    if request.method == 'POST':
+        cerca = request.POST['cerca']
+        ut = utente.objects.filter(nome__contains=cerca)
+
+        context = {
+            'utenti': ut,
+        }
+    return render(request, 'Form/cerca.html', context)

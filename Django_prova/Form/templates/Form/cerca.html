@@ -2,18 +2,10 @@
 
 {% block content %}
 
-<div class="mt-3 container w-50">
-    <form action="{% url 'cerca' %}" method="POST">
-        {% csrf_token %}
-        <div>
-            <div class="input-group mb-3 w-25">
-                <input type="text" class="form-control" placeholder="Cerca" name="cerca">
-                <button class="btn btn-primary input-group-text"> <i class="bi bi-search"></i> </button>
-            </div>
-            <a href="{% url 'form' %}" class="btn btn-primary w-25"> Manda un messaggio </a>
-        </div>
-    </form>
-    <div class="row mt-5 text-center">
+<div class="mt-3 container text-center w-50">
+    <a href="{% url 'form' %}" class="btn btn-primary col-4"> Manda un messaggio </a>
+    
+    <div class="row mt-5">
         {% for ut in utenti %}
         <div class="card" style="width: 18rem; color: #000;">
             <div class="card-body">
