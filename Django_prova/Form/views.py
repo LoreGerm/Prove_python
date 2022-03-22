@@ -33,7 +33,7 @@ def messaggi(request):
 def elimina(request, id):
     ut = utente.objects.get(id = id)
     ut.delete()
-    return redirect('mess')
+    
 
 
 def update(request, id):
@@ -42,7 +42,7 @@ def update(request, id):
         form = FormMsg(request.POST, instance=ut)
         if form.is_valid:
             form.save()
-            messages.success(request, 'Modifica avvenuta con successo')
+            return redirect('mess')
         else:
             messages.success(request, 'Errore')
 
