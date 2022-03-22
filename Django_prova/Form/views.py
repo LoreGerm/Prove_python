@@ -14,6 +14,9 @@ def form(request):
             messages.success(request, 'Errore')
 
     context = {
+        'nome': '',
+        'cognome': '',
+        'email': '',
         'views': 'form',
         'msc': 'Mandami un messaggio',
         'btn': 'Invia'
@@ -44,6 +47,10 @@ def update(request, id):
             messages.success(request, 'Errore')
 
     context = {
+        'nome': ut.nome,
+        'cognome': ut.cognome,
+        'email': ut.email,
+        'messaggio': ut.messaggio,
         'utente': id,
         'views': 'update',
         'msc': 'Modifica messaggio',

@@ -12,17 +12,21 @@
             {% csrf_token %}
             <div class="row mb-3">
                 <div class="col">
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" aria-label="Nome" required>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" aria-label="Nome" value="{{ nome }}" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Cognome" aria-label="Cognome" required>
+                    <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Cognome" aria-label="Cognome" value="{{ cognome }}" required>
                 </div>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ email }}" required>
             </div>
             <div class="mb-3">
+                {% if views == 'form' %}
                 <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio"></textarea>
+                {% else %}
+                <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio"> {{ messaggio }} </textarea>
+                {% endif %}
             </div>
             <div class="row">
                 <div class="col">
