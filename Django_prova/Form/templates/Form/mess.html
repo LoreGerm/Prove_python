@@ -6,10 +6,12 @@
     <form action="{% url 'cerca' %}" method="POST">
         {% csrf_token %}
         <div>
+            {% if views == 'mess' %}
             <div class="input-group mb-3 w-25">
                 <input type="text" class="form-control" placeholder="Cerca" name="cerca">
                 <button class="btn btn-primary input-group-text"> <i class="bi bi-search"></i> </button>
             </div>
+            {% endif %}
             <a href="{% url 'form' %}" class="btn btn-primary w-25"> Manda un messaggio </a>
         </div>
     </form>

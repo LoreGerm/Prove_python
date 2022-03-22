@@ -26,7 +26,10 @@ def form(request):
 
 def messaggi(request):
     ut = utente.objects.all()
-    context = {'utenti':ut}
+    context = {
+        'utenti':ut,
+        'views': 'mess',
+    }
     return render(request, 'Form/mess.html', context)
 
 
@@ -62,9 +65,19 @@ def update(request, id):
 def cerca(request):
     if request.method == 'POST':
         cerca = request.POST['cerca']
-        ut = utente.objects.filter(nome__icontains=cerca)
+
+        nome = utente.objects.filter(nome__icontains=cerca)
+        cognome = utente.objects.filter(cognome__icontains=cerca)
+        email = utente.objects.filter(email__icontains=cerca)
+        messaggio = utente.objects.filter(messaggio__icontains=cerca)
+
+        ut = set(nome).union(set(cognome))
+        ut.union(set(email))
+        ut.union(set(messaggio))
+        ut = list(ut)
 
         context = {
             'utenti': ut,
+            'views': 'cerca',
         }
-    return render(request, 'Form/cerca.html', context)
+    return render(request, 'Form/mess.html', context)
