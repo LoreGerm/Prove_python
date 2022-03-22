@@ -55,7 +55,7 @@ def update(request, id):
 def cerca(request):
     if request.method == 'POST':
         cerca = request.POST['cerca']
-        ut = utente.objects.filter(nome__contains=cerca)
+        ut = utente.objects.filter(nome__icontains=cerca)
 
         context = {
             'utenti': ut,
