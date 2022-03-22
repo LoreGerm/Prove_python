@@ -66,6 +66,18 @@ def cerca(request):
     if request.method == 'POST':
         cerca = request.POST['cerca']
 
+        ut = utente.objects.raw("SELECT nome,cognome,email,messaggio FROM Form_utente WHERE nome LIKE '%"+ cerca +"%' OR cognome LIKE '%"+ cerca +"%' OR email LIKE '%"+ cerca +"%' OR messaggio LIKE '%"+ cerca +"%'")
+
+        print(ut)
+        
+        context = {
+            'utenti': ut,
+            'views': 'cerca',
+        }
+    return render(request, 'Form/mess.html', context)
+
+
+'''
         nome = utente.objects.filter(nome__icontains=cerca)
         cognome = utente.objects.filter(cognome__icontains=cerca)
         email = utente.objects.filter(email__icontains=cerca)
@@ -75,9 +87,4 @@ def cerca(request):
         ut.union(set(email))
         ut.union(set(messaggio))
         ut = list(ut)
-
-        context = {
-            'utenti': ut,
-            'views': 'cerca',
-        }
-    return render(request, 'Form/mess.html', context)
+'''
