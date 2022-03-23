@@ -7,12 +7,16 @@ from django.db.models import Q
 
 def aggiungi(request):
     if request.method == 'POST':
-        form = FormMsg(request.POST)
-        if form.is_valid:
-            form.save()
-            messages.success(request, 'Il messaggio è stato inviato')
+        cerca = request.POST['email']
+        if utente.objects.filter(email__icontains=cerca):
+            messages.success(request, "La mail è già registrata")
         else:
-            messages.success(request, 'Errore')
+            form = FormMsg(request.POST)
+            if form.is_valid:
+                form.save()
+                messages.success(request, 'Il messaggio è stato inviato')
+            else:
+                messages.success(request, 'Errore')
 
     context = {
         'nome': '',
