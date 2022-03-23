@@ -4,7 +4,7 @@
 <div class="mt-5 container text-center w-50">
     <div>
         <h1 class="mb-5"> {{ msc }} </h3>
-        {% if views == 'form' %}
+        {% if views == 'aggiungi' %}
         <form action="{% url views %}" method="POST">
         {% else %}
         <form action="{% url views utente %}" method="POST">
@@ -25,7 +25,7 @@
                 {% if views == 'form' %}
                 <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio"></textarea>
                 {% else %}
-                <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio"> {{ messaggio }} </textarea>
+                <textarea class="form-control" id="messaggio" name="messaggio" rows="10" placeholder="Messaggio">{{ messaggio }}</textarea>
                 {% endif %}
             </div>
             <div class="row">

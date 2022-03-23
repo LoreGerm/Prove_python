@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 
 
-def form(request):
+def aggiungi(request):
     if request.method == 'POST':
         form = FormMsg(request.POST)
         if form.is_valid:
@@ -18,7 +18,7 @@ def form(request):
         'nome': '',
         'cognome': '',
         'email': '',
-        'views': 'form',
+        'views': 'aggiungi',
         'msc': 'Mandami un messaggio',
         'btn': 'Invia'
     }
