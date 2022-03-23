@@ -64,14 +64,15 @@ def update(request, id):
 
 
 def cerca(request):
+    ut = []
     if request.method == 'POST':
         cerca = request.POST['cerca']
 
         ut = utente.objects.filter(Q(nome__icontains=cerca) | Q(cognome__icontains=cerca) | Q(email__icontains=cerca))
         #ut = utente.objects.raw('SELECT nome,cognome,email,messaggio FROM Form_utente WHERE nome LIKE %'+ cerca +'% OR cognome LIKE %'+ cerca +'% OR email LIKE %'+ cerca +'% OR messaggio LIKE %'+ cerca +'%')
         
-        context = {
-            'utenti': ut,
-            'views': 'cerca',
-        }
+    context = {
+        'utenti': ut,
+        'views': 'cerca',
+    }
     return render(request, 'Form/mess.html', context)
