@@ -7,14 +7,18 @@
         {% csrf_token %}
         <div class="row">
             {% if views == 'mess' %}
-            <div class="input-group mb-3 w-25">
-                <input type="text" class="form-control" placeholder="Cerca" name="cerca">
+            <div class="input-group w-25">
+                <input type="text" class="form-control" placeholder="Cerca" name="cerca" required>
                 <button class="btn btn-primary input-group-text"> <i class="bi bi-search"></i> </button>
             </div>
             {% else %}
-            <a href="{% url 'mess' %}" class="btn btn-primary w-25"> Messaggi </a>
+            <div class="col-3">
+                <a href="{% url 'mess' %}" class="btn btn-primary w-100"> Messaggi </a>
+            </div>
             {% endif %}
-            <a href="{% url 'form' %}" class="btn btn-primary w-25"> Manda un messaggio </a>
+            <div class="col-3">
+                <a href="{% url 'form' %}" class="btn btn-primary w-100"> Manda un messaggio </a>
+            </div>
         </div>
     </form>
     <div class="row mt-5 text-center">
