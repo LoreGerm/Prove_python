@@ -4,6 +4,14 @@ from .forms import FormMsg
 from django.contrib import messages
 from django.db.models import Q
 
+from rest_framework import viewsets
+from .serializers import UtenteSerializer
+
+
+class UtenteViewsSet(viewsets.ModelViewSet):
+    queryset = utente.objects.all()
+    serializer_class = UtenteSerializer
+
 
 def aggiungi(request):
     if request.method == 'POST':
